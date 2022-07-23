@@ -10,8 +10,8 @@ class App extends Component {
   }
 
   quotes = () => {
-    fetch("api/quotes")
-      .then((res) => res.text())
+    fetch("/api/quotes")
+      .then((response) => response.text())
       .then((message) => {
         this.setState({ message: message });
       });
@@ -22,9 +22,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <h3 className="App-title">"{this.state.message}"</h3>
         </header>
-
-        <p>{this.state.message}</p>
       </div>
     );
   }
