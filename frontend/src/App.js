@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
   state = {};
-
-  componentDidMount() {
-    this.quotes();
-  }
 
   quotes = () => {
     fetch("/api/quotes")
@@ -17,13 +12,21 @@ class App extends Component {
       });
   };
 
+  getRandomQuote = () => {
+    this.quotes();
+  };
+
   render() {
+    const handleSubmit = () => {
+      this.getRandomQuote();
+    };
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h3 className="App-title">"{this.state.message}"</h3>
-        </header>
+        <header className="App-title">Inspirational Thought Machine</header>
+        <h3 className="quote-display">{this.state.message}</h3>
+
+        <button onClick={handleSubmit}>Click</button>
       </div>
     );
   }
