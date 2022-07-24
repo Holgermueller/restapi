@@ -1,35 +1,27 @@
-import React, { Component } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
-class App extends Component {
-  state = {};
+function App() {
+  const [quotes, setQuotes] = useState();
+  const [singleQuote, setSingleQuote] = useState();
 
-  quotes = () => {
+  useEffect(() => {
     fetch("/api/quotes")
       .then((response) => response.text())
       .then((message) => {
-        this.setState({ message: message });
-      });
-  };
+        setQuotes(message);
+      })
+      .catch((err) => console.log(err));
+  });
 
-  getRandomQuote = () => {
-    this.quotes();
-  };
+  return (
+    <div className="App">
+      <header className="App-title">Inspirational Thought Machine</header>
+      <h3 className="quote-display">{singleQuote}</h3>
 
-  render() {
-    const handleSubmit = () => {
-      this.getRandomQuote();
-    };
-
-    return (
-      <div className="App">
-        <header className="App-title">Inspirational Thought Machine</header>
-        <h3 className="quote-display">{this.state.message}</h3>
-
-        <button onClick={handleSubmit}>Click</button>
-      </div>
-    );
-  }
+      <button onClick={() => setSingleQuote(quotes)}>Click</button>
+    </div>
+  );
 }
 
 export default App;
