@@ -2,19 +2,21 @@ package com.holgermueller.restapi.restapi.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
-import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.holgermueller.restapi.restapi.Quote;
 
 @RestController
 public class QuoteController {
-  @GetMapping("/api/quotes")
+  @RequestMapping("/api/quotes")
   public Object quotes() {
 
-    ArrayList<Quote> quotes = new ArrayList<Quote>(
+    List<Quote> quotes = new ArrayList<Quote>(
         Arrays.asList(
             new Quote(1, "Blah blh", "einstein"),
             new Quote(2, "foejioewjfew", " dhglshgs")));
