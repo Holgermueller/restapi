@@ -2,14 +2,30 @@
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  margin: auto;
+
   align-items: center;
   font-size: calc(10px + 2vmin);
   justify-content: center;
 }
 
-.App-title,
-.quote-display {
+.App-title {
   color: white;
+  margin: auto;
+}
+
+.quote-display {
+  background-color: slategrey;
+  width: 85%;
+  margin: 7% auto;
+  min-height: 50vh;
+}
+
+.quote {
+  margin: auto;
+  padding: 12% 12% 0 12%;
+}
+
+.speaker {
+  padding: 1%;
 }

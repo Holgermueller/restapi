@@ -1,27 +1,15 @@
 package com.holgermueller.restapi.restapi;
 
 public class Quote {
-
-    private int id;
     private String theQuote;
     private String speaker;
 
     public Quote() {
-
     }
 
-    public Quote(int id, String theQuote, String speaker) {
-        this.id = id;
+    public Quote(String theQuote, String speaker) {
         this.theQuote = theQuote;
         this.speaker = speaker;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTheQuote() {
@@ -42,7 +30,7 @@ public class Quote {
 
     @Override
     public String toString() {
-        return id + theQuote + speaker;
+        return theQuote + speaker;
     }
 
 }

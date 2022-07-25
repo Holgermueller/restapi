@@ -2,26 +2,24 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [singleQuote, setSingleQuote] = useState();
+  const [singleQuote, setSingleQuote] = useState([]);
 
-  const getQuotes = () => {
-    fetch("/api/quotes")
-      .then((response) => response.text())
-      .then((quote) => {
-        setSingleQuote(quote);
-        console.log(quote.split());
-      })
-      .catch((err) => console.log(err));
-  };
+  async function getQuotes() {
+    const response = await fetch("/api/quotes");
+    const body = await response.json();
+    setSingleQuote(body);
+  }
 
   return (
     <div className="App">
       <header className="App-title">Inspirational Thought Machine</header>
-      <h3 className="quote-display">{singleQuote}</h3>
 
-      <h5>-{singleQuote}</h5>
+      <div className="quote-display">
+        <h3 className="quote">{JSON.stringify(singleQuote.theQuote)}</h3>
+        <h4 className="speaker">{JSON.stringify(singleQuote.speaker)}</h4>
+      </div>
 
-      <button onClick={() => getQuotes()}>Click</button>
+      <button onClick={() => getQuotes()}>Get Quote</button>
     </div>
   );
 }
